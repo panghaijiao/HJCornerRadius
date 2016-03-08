@@ -10,6 +10,6 @@
 
 @interface UIImageView (cornerRadius)
 
-@property (nonatomic, assign) CGFloat cornerRadius;
+@property (nonatomic, assign) CGFloat aliCornerRadius;
 
 @end

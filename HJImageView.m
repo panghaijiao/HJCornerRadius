@@ -9,7 +9,25 @@
 #import "HJImageView.h"
 #import <objc/runtime.h>
 
-////////////////////////////////////////////////////////////////////////
+@interface UIImage (cornerRadius)
+
+@property (nonatomic, assign) CGFloat aliCornerRadius;
+
+@end
+
+@implementation UIImage (cornerRadius)
+
+- (CGFloat)aliCornerRadius {
+    return [objc_getAssociatedObject(self, @selector(aliCornerRadius)) floatValue];
+}
+
+- (void)setAliCornerRadius:(CGFloat)aliCornerRadius {
+    objc_setAssociatedObject(self, @selector(aliCornerRadius), @(aliCornerRadius), OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+@end
+
+/////////////////////////////////////////////////////////////////////
 @interface HJImageObserver : NSObject
 
 @property (nonatomic, assign) UIImageView *originImageView;
@@ -34,7 +52,11 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString*, id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"image"] && context != (__bridge void *)(self)) {
+    if ([keyPath isEqualToString:@"image"] && context == (__bridge void *)(self)) {
+        UIImage *newImage = change[@"new"];
+        if (![newImage isKindOfClass:[UIImage class]] || newImage.aliCornerRadius > 0) {
+            return;
+        }
         [self updateImageView];
     }
 }
@@ -44,10 +66,15 @@
         return;
     }
     _cornerRadius = cornerRadius;
-    [self updateImageView];
+    if (_cornerRadius > 0) {
+        [self updateImageView];
+    }
 }
 
 - (void)updateImageView {
+    if (!self.originImageView.image) {
+        return;
+    }
     UIGraphicsBeginImageContextWithOptions(self.originImageView.bounds.size, false, [UIScreen mainScreen].scale);
     CGContextRef currnetContext = UIGraphicsGetCurrentContext();
     CGContextAddPath(currnetContext, [UIBezierPath bezierPathWithRoundedRect:self.originImageView.bounds cornerRadius:self.cornerRadius].CGPath);
@@ -55,20 +82,23 @@
     [self.originImageView.layer renderInContext:currnetContext];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    self.originImageView.image = image;
+    if ([image isKindOfClass:[UIImage class]]) {
+        image.aliCornerRadius = self.cornerRadius;
+        self.originImageView.image = image;
+    }
 }
 
 @end
 
+/////////////////////////////////////////////////////////////////////
 @implementation UIImageView (cornerRadius)
 
-- (CGFloat)cornerRadius {
+- (CGFloat)aliCornerRadius {
     return [self imageObserver].cornerRadius;
 }
 
-- (void)setCornerRadius:(CGFloat)cornerRadius {
-    self.layer.cornerRadius = cornerRadius;
-    [self imageObserver].cornerRadius = cornerRadius;
+- (void)setAliCornerRadius:(CGFloat)aliCornerRadius {
+    [self imageObserver].cornerRadius = aliCornerRadius;
 }
 
 - (HJImageObserver *)imageObserver {

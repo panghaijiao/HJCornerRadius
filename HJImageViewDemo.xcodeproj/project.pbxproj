@@ -13,7 +13,7 @@
 		A0E84A481C8DF3AB0047C905 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0E84A461C8DF3AB0047C905 /* Main.storyboard */; };
 		A0E84A4A1C8DF3AB0047C905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0E84A491C8DF3AB0047C905 /* Assets.xcassets */; };
 		A0E84A4D1C8DF3AB0047C905 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0E84A4B1C8DF3AB0047C905 /* LaunchScreen.storyboard */; };
-		A0E84A561C8DF3EE0047C905 /* HJImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E84A551C8DF3EE0047C905 /* HJImageView.m */; };
+		A0E84A611C9084100047C905 /* HJCornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E84A601C9084100047C905 /* HJCornerRadius.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +27,8 @@
 		A0E84A491C8DF3AB0047C905 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0E84A4C1C8DF3AB0047C905 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0E84A4E1C8DF3AB0047C905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0E84A541C8DF3EE0047C905 /* HJImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJImageView.h; sourceTree = SOURCE_ROOT; };
-		A0E84A551C8DF3EE0047C905 /* HJImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJImageView.m; sourceTree = SOURCE_ROOT; };
+		A0E84A5F1C9084100047C905 /* HJCornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCornerRadius.h; sourceTree = "<group>"; };
+		A0E84A601C9084100047C905 /* HJCornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCornerRadius.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 		A0E84A3C1C8DF3AB0047C905 /* HJImageViewDemo */ = {
 			isa = PBXGroup;
 			children = (
-				A0E84A571C8DF4780047C905 /* HJImageView */,
+				A0E84A5E1C9084100047C905 /* HJCornerRadius */,
 				A0E84A401C8DF3AB0047C905 /* AppDelegate.h */,
 				A0E84A411C8DF3AB0047C905 /* AppDelegate.m */,
 				A0E84A431C8DF3AB0047C905 /* ViewController.h */,
@@ -83,14 +83,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A0E84A571C8DF4780047C905 /* HJImageView */ = {
+		A0E84A5E1C9084100047C905 /* HJCornerRadius */ = {
 			isa = PBXGroup;
 			children = (
-				A0E84A541C8DF3EE0047C905 /* HJImageView.h */,
-				A0E84A551C8DF3EE0047C905 /* HJImageView.m */,
+				A0E84A5F1C9084100047C905 /* HJCornerRadius.h */,
+				A0E84A601C9084100047C905 /* HJCornerRadius.m */,
 			);
-			name = HJImageView;
-			sourceTree = "<group>";
+			path = HJCornerRadius;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -123,6 +123,7 @@
 				TargetAttributes = {
 					A0E84A391C8DF3AB0047C905 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = XETKX7L8GX;
 					};
 				};
 			};
@@ -162,7 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0E84A561C8DF3EE0047C905 /* HJImageView.m in Sources */,
+				A0E84A611C9084100047C905 /* HJCornerRadius.m in Sources */,
 				A0E84A451C8DF3AB0047C905 /* ViewController.m in Sources */,
 				A0E84A421C8DF3AB0047C905 /* AppDelegate.m in Sources */,
 				A0E84A3F1C8DF3AB0047C905 /* main.m in Sources */,
@@ -275,6 +276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HJImageViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.olinone.HJImageViewDemo;
@@ -286,6 +288,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HJImageViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.olinone.HJImageViewDemo;

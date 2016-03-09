@@ -1,12 +1,12 @@
 //
-//  HJImageView.m
-//  HJImageView
+//  HJCornerRadius.m
+//  HJImageViewDemo
 //
-//  Created by haijiao on 16/3/8.
+//  Created by haijiao on 16/3/10.
 //  Copyright © 2016年 olinone. All rights reserved.
 //
 
-#import "HJImageView.h"
+#import "HJCornerRadius.h"
 #import <objc/runtime.h>
 
 @interface UIImage (cornerRadius)
@@ -57,7 +57,9 @@
         if (![newImage isKindOfClass:[UIImage class]] || newImage.aliCornerRadius > 0) {
             return;
         }
-        [self updateImageView];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateImageView];
+        });
     }
 }
 
@@ -75,13 +77,15 @@
     if (!self.originImageView.image) {
         return;
     }
-    UIGraphicsBeginImageContextWithOptions(self.originImageView.bounds.size, false, [UIScreen mainScreen].scale);
+    
+    UIGraphicsBeginImageContextWithOptions(self.originImageView.bounds.size, NO, [UIScreen mainScreen].scale);
     CGContextRef currnetContext = UIGraphicsGetCurrentContext();
     CGContextAddPath(currnetContext, [UIBezierPath bezierPathWithRoundedRect:self.originImageView.bounds cornerRadius:self.cornerRadius].CGPath);
     CGContextClip(currnetContext);
     [self.originImageView.layer renderInContext:currnetContext];
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    
     if ([image isKindOfClass:[UIImage class]]) {
         image.aliCornerRadius = self.cornerRadius;
         self.originImageView.image = image;
@@ -91,7 +95,7 @@
 @end
 
 /////////////////////////////////////////////////////////////////////
-@implementation UIImageView (cornerRadius)
+@implementation UIImageView (HJCornerRadius)
 
 - (CGFloat)aliCornerRadius {
     return [self imageObserver].cornerRadius;

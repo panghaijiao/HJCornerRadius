@@ -19,8 +19,10 @@ imageview.aliCornerRadius = 5.0f;
 
 ##Note
 
+make sure
+
 ```
-make sure layer.masksToBounds = NO
+imageview.layer.masksToBounds = NO
 ```
 
 ## Installation with CocoaPods

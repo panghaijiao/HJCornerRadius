@@ -60,9 +60,7 @@
         if (![newImage isKindOfClass:[UIImage class]] || newImage.aliCornerRadius) {
             return;
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self updateImageView];
-        });
+        [self updateImageView];
     }
     if ([keyPath isEqualToString:@"contentMode"]) {
         self.originImageView.image = self.originImage;
@@ -96,6 +94,10 @@
     if ([image isKindOfClass:[UIImage class]]) {
         image.aliCornerRadius = YES;
         self.originImageView.image = image;
+    } else {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateImageView];
+        });
     }
 }
 

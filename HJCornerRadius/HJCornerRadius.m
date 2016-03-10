@@ -11,17 +11,17 @@
 
 @interface UIImage (cornerRadius)
 
-@property (nonatomic, assign) CGFloat aliCornerRadius;
+@property (nonatomic, assign) BOOL aliCornerRadius;
 
 @end
 
 @implementation UIImage (cornerRadius)
 
-- (CGFloat)aliCornerRadius {
-    return [objc_getAssociatedObject(self, @selector(aliCornerRadius)) floatValue];
+- (BOOL)aliCornerRadius {
+    return [objc_getAssociatedObject(self, @selector(aliCornerRadius)) boolValue];
 }
 
-- (void)setAliCornerRadius:(CGFloat)aliCornerRadius {
+- (void)setAliCornerRadius:(BOOL)aliCornerRadius {
     objc_setAssociatedObject(self, @selector(aliCornerRadius), @(aliCornerRadius), OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
@@ -31,6 +31,7 @@
 @interface HJImageObserver : NSObject
 
 @property (nonatomic, assign) UIImageView *originImageView;
+@property (nonatomic, strong) UIImage *originImage;
 @property (nonatomic, assign) CGFloat cornerRadius;
 
 - (instancetype)initWithImageView:(UIImageView *)imageView;
@@ -40,26 +41,31 @@
 @implementation HJImageObserver
 
 - (void)dealloc {
-    [self.originImageView removeObserver:self forKeyPath:@"image" context:(__bridge void *)(self)];
+    [self.originImageView removeObserver:self forKeyPath:@"image"];
+    [self.originImageView removeObserver:self forKeyPath:@"contentMode"];
 }
 
 - (instancetype)initWithImageView:(UIImageView *)imageView{
     if (self = [super init]) {
         self.originImageView = imageView;
-        [imageView addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionNew context:(__bridge void *)(self)];
+        [imageView addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionNew context:nil];
+        [imageView addObserver:self forKeyPath:@"contentMode" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString*, id> *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"image"] && context == (__bridge void *)(self)) {
+    if ([keyPath isEqualToString:@"image"]) {
         UIImage *newImage = change[@"new"];
-        if (![newImage isKindOfClass:[UIImage class]] || newImage.aliCornerRadius > 0) {
+        if (![newImage isKindOfClass:[UIImage class]] || newImage.aliCornerRadius) {
             return;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             [self updateImageView];
         });
+    }
+    if ([keyPath isEqualToString:@"contentMode"]) {
+        self.originImageView.image = self.originImage;
     }
 }
 
@@ -74,7 +80,8 @@
 }
 
 - (void)updateImageView {
-    if (!self.originImageView.image) {
+    self.originImage = self.originImageView.image;
+    if (!self.originImage) {
         return;
     }
     
@@ -87,7 +94,7 @@
     UIGraphicsEndImageContext();
     
     if ([image isKindOfClass:[UIImage class]]) {
-        image.aliCornerRadius = self.cornerRadius;
+        image.aliCornerRadius = YES;
         self.originImageView.image = image;
     }
 }

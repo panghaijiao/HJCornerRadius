@@ -29,9 +29,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.imageView.aliCornerRadius = 10.0f;
+        
+        UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(100, 5, 50, 50)];
+        imageView1.image = [UIImage imageNamed:@"1"];
+        imageView1.aliCornerRadius = 10.0f;
+        cell.accessoryView = imageView1;
     }
     
-    cell.imageView.image = [UIImage imageNamed:@"1"];
+    cell.imageView.image = [UIImage imageNamed:@"2"];
+    cell.accessoryView.contentMode = UIViewContentModeScaleAspectFill;
     
     return cell;
 }

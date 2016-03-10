@@ -14,9 +14,11 @@
 		A0E84A4A1C8DF3AB0047C905 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0E84A491C8DF3AB0047C905 /* Assets.xcassets */; };
 		A0E84A4D1C8DF3AB0047C905 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0E84A4B1C8DF3AB0047C905 /* LaunchScreen.storyboard */; };
 		A0E84A611C9084100047C905 /* HJCornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E84A601C9084100047C905 /* HJCornerRadius.m */; };
+		BE3FFFD7FB37A8CD20BD0F23 /* libPods-HJImageViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 34CB7E6CE9BF3D43719EE24F /* libPods-HJImageViewDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34CB7E6CE9BF3D43719EE24F /* libPods-HJImageViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HJImageViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E84A3A1C8DF3AB0047C905 /* HJImageViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HJImageViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E84A3E1C8DF3AB0047C905 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A0E84A401C8DF3AB0047C905 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -29,6 +31,8 @@
 		A0E84A4E1C8DF3AB0047C905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0E84A5F1C9084100047C905 /* HJCornerRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJCornerRadius.h; sourceTree = "<group>"; };
 		A0E84A601C9084100047C905 /* HJCornerRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCornerRadius.m; sourceTree = "<group>"; };
+		ADA3E643E7EAC006B7D8EDD1 /* Pods-HJImageViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HJImageViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HJImageViewDemo/Pods-HJImageViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		E0C8E83CC44D5E44B497CCB0 /* Pods-HJImageViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HJImageViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-HJImageViewDemo/Pods-HJImageViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +40,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE3FFFD7FB37A8CD20BD0F23 /* libPods-HJImageViewDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47CD31D8984C4A1F0BC0473E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				34CB7E6CE9BF3D43719EE24F /* libPods-HJImageViewDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A0E84A311C8DF3AB0047C905 = {
 			isa = PBXGroup;
 			children = (
 				A0E84A3C1C8DF3AB0047C905 /* HJImageViewDemo */,
 				A0E84A3B1C8DF3AB0047C905 /* Products */,
+				EC181D6A7A4DBE6F5767F0E0 /* Pods */,
+				47CD31D8984C4A1F0BC0473E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +107,15 @@
 			path = HJCornerRadius;
 			sourceTree = SOURCE_ROOT;
 		};
+		EC181D6A7A4DBE6F5767F0E0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ADA3E643E7EAC006B7D8EDD1 /* Pods-HJImageViewDemo.debug.xcconfig */,
+				E0C8E83CC44D5E44B497CCB0 /* Pods-HJImageViewDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,9 +123,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0E84A511C8DF3AB0047C905 /* Build configuration list for PBXNativeTarget "HJImageViewDemo" */;
 			buildPhases = (
+				4CED49FE8F3B5C9007FD07D4 /* Check Pods Manifest.lock */,
 				A0E84A361C8DF3AB0047C905 /* Sources */,
 				A0E84A371C8DF3AB0047C905 /* Frameworks */,
 				A0E84A381C8DF3AB0047C905 /* Resources */,
+				7BCBB4B5E24C1556330636ED /* Embed Pods Frameworks */,
+				46CC1CEE35A7CFA66F08AAB7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,6 +183,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		46CC1CEE35A7CFA66F08AAB7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HJImageViewDemo/Pods-HJImageViewDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CED49FE8F3B5C9007FD07D4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7BCBB4B5E24C1556330636ED /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HJImageViewDemo/Pods-HJImageViewDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A0E84A361C8DF3AB0047C905 /* Sources */ = {
@@ -273,6 +348,7 @@
 		};
 		A0E84A521C8DF3AB0047C905 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADA3E643E7EAC006B7D8EDD1 /* Pods-HJImageViewDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -285,6 +361,7 @@
 		};
 		A0E84A531C8DF3AB0047C905 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0C8E83CC44D5E44B497CCB0 /* Pods-HJImageViewDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

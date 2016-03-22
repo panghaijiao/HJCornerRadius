@@ -11,8 +11,6 @@ This library provides a category for UIImageView with support for cornerRadius a
 
 For more details please click [here](http://www.olinone.com/?p=484)
 
-更多详情，浏览[博客](http://www.olinone.com/?p=484)
-
 ##How To Use
 
 ```

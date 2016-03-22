@@ -9,7 +9,9 @@ This library provides a category for UIImageView with support for cornerRadius a
 
 一行代码搞定图片圆角
 
+For more details please click [here](http://www.olinone.com/?p=484)
 
+更多详情，浏览[博客](http://www.olinone.com/?p=484)
 
 ##How To Use
 

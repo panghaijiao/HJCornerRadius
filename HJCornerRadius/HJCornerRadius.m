@@ -83,13 +83,16 @@
         return;
     }
     
+    UIImage *image = nil;
     UIGraphicsBeginImageContextWithOptions(self.originImageView.bounds.size, NO, [UIScreen mainScreen].scale);
     CGContextRef currnetContext = UIGraphicsGetCurrentContext();
-    CGContextAddPath(currnetContext, [UIBezierPath bezierPathWithRoundedRect:self.originImageView.bounds cornerRadius:self.cornerRadius].CGPath);
-    CGContextClip(currnetContext);
-    [self.originImageView.layer renderInContext:currnetContext];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+    if (currnetContext) {
+        CGContextAddPath(currnetContext, [UIBezierPath bezierPathWithRoundedRect:self.originImageView.bounds cornerRadius:self.cornerRadius].CGPath);
+        CGContextClip(currnetContext);
+        [self.originImageView.layer renderInContext:currnetContext];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
     
     if ([image isKindOfClass:[UIImage class]]) {
         image.aliCornerRadius = YES;

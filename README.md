@@ -32,7 +32,7 @@ imageview.layer.masksToBounds = NO
 ## Podfile
 
 ```
-pod 'HJCornerRadius', :git => "https://github.com/panghaijiao/HJCornerRadius.git"
+pod 'HJCornerRadius', :git => 'https://github.com/panghaijiao/HJCornerRadius.git'
 ```
 
 

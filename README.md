@@ -11,13 +11,13 @@ This library provides a category for UIImageView with support for cornerRadius a
 
 For more details please click [here](http://www.olinone.com/?p=484)
 
-##How To Use
+## How To Use
 
 ```
 imageview.aliCornerRadius = 5.0f;
 ```
 
-##Note
+## Note
 
 make sure
 

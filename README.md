@@ -36,6 +36,6 @@ pod 'HJCornerRadius', :git => 'https://github.com/panghaijiao/HJCornerRadius.git
 ```
 
 
-##License:  
+## License:  
 
 HJCornerRadius is released under the MIT license. See LICENSE for details.

@@ -43,4 +43,4 @@ HJCornerRadius is released under the MIT license. See LICENSE for details.
 
 ## Sponsor
 
-![GitHub](http://shenmaip.com/zfbwpay340.png)
+![GitHub](http://cdn.olinone.com/zfbwpay340.png)
